@@ -17,7 +17,7 @@ export const TaskForm=({taskList,setTaskList})=>{
             </Box>
             <Box>
                 <Button type={'submit'} onClick={()=>{
-                    setTaskList([...taskList, {name: nombre, description:desc, state:false}])
+                    setTaskList([...taskList, {name: nombre, description:desc}])
                 }}>Crear</Button>
             </Box>
         </form>
