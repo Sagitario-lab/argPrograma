@@ -12,11 +12,13 @@ function App() {
         <Box sx={{display:'flex', justifyContent:'center'}}>
             <TaskForm taskList={taskList} setTaskList={setTaskList}/>
         </Box>
-        <div>
+        <Box>
             <TaskList taskList={taskList} setTaskList={setTaskList}></TaskList>
-        </div>
+        </Box>
     </div>
   )
 }
 
 export default App
+
+
