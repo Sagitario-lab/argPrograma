@@ -1,25 +1,50 @@
-import {Box, Button, TextField} from "@mui/material";
-import {useState} from "react";
+import { Box, Button, TextField } from "@mui/material";
+import { useState } from "react";
+import { SnackbarProvider, useSnackbar } from 'notistack';
 
-export const TaskForm=({taskList,setTaskList})=>{
-    const [nombre,setNombre]=useState()
-    const [desc,setDesc]=useState()
+export const TaskForm = ({ taskList, setTaskList }) => {
+    const [nombre, setNombre] = useState("");
+    const [desc, setDesc] = useState("");
+    const { enqueueSnackbar } = useSnackbar();
+
+    const tarjetaCreada = () => {
+        enqueueSnackbar('Tarjeta Creada', { variant: 'info', autoHideDuration: 1000 });
+    };
+
+    const onSubmitForm = (e) => {
+        e.preventDefault(); 
+        setTaskList([...taskList, { name: nombre, description: desc }]);
+        tarjetaCreada();
+    
+        setNombre("");
+        setDesc("");
+    }
 
 
+    return (
+    <form onSubmit={onSubmitForm}>
+    <Box>
+        <TextField
+            variant="filled"
+            label={'Nombre de la tarea'}
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            required
+        />
+    </Box>
+    <Box>
+        <TextField
+            variant="filled"
+            label={'Descripción'}
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+        />
+        </Box>
+        <Box>
+        <Button type={'submit'}>Crear</Button>
+    </Box>
+    </form>
+    );
+};
 
-    return(
-        <form onSubmit={(e)=>e.preventDefault()} >
-           <Box>
-               <TextField variant="filled" label={'Nombre de la tarea'} onChange={(e)=>{setNombre(e.target.value)}}/>
-           </Box>
-            <Box>
-                <TextField variant="filled" label={'Descripción'} onChange={(e)=>{setDesc(e.target.value)}}/>
-            </Box>
-            <Box>
-                <Button type={'submit'} onClick={()=>{
-                    setTaskList([...taskList, {name: nombre, description:desc}])
-                }}>Crear</Button>
-            </Box>
-        </form>
-    )
-}
+export default TaskForm;
