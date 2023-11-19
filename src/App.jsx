@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import './App.css';
 import { TaskForm } from "./Components/TaskForm/TaskForm.jsx";
 import { TaskList } from "./Components/TaskList/TaskList.jsx";
@@ -8,6 +8,11 @@ import { SnackbarProvider, useSnackbar } from 'notistack';
 function App() {
   const [taskList, setTaskList] = useState([]);
   const { enqueueSnackbar } = useSnackbar();
+
+  useEffect(()=>{
+    const list= localStorage.getItem('List')
+    setTaskList(JSON.parse(list))
+  },[])
 
   return (
     <SnackbarProvider maxSnack={3}>
