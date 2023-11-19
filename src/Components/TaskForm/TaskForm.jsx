@@ -20,29 +20,33 @@ export const TaskForm = ({ taskList, setTaskList }) => {
         setDesc("");
     }
 
+    const saveTaskList=()=>{
+        localStorage.setItem('List', JSON.stringify(taskList))
+    }
 
     return (
     <form onSubmit={onSubmitForm}>
-    <Box>
-        <TextField
-            variant="filled"
-            label={'Nombre de la tarea'}
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-            required
-        />
-    </Box>
-    <Box>
-        <TextField
-            variant="filled"
-            label={'Descripción'}
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-        />
+        <Box>
+            <TextField
+                variant="filled"
+                label={'Nombre de la tarea'}
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+                required
+            />
         </Box>
         <Box>
-        <Button type={'submit'}>Crear</Button>
-    </Box>
+            <TextField
+                variant="filled"
+                label={'Descripción'}
+                value={desc}
+                onChange={(e) => setDesc(e.target.value)}
+            />
+        </Box>
+        <Box>
+            <Button type={'submit'}>Crear</Button>
+            <Button onClick={()=>{saveTaskList()}}>Guardar</Button>
+        </Box>
     </form>
     );
 };
