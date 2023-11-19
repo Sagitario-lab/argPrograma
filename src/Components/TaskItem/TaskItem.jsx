@@ -2,7 +2,7 @@ import {Box, Button, IconButton} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import {useEffect, useState} from "react";
 
-export const TaskItem=({name, description, state, setTaskList, taskList, index, message,setMessage, setSnackbarOpen })=>{
+export const TaskItem=({name, description, setTaskList, taskList, index, message, setMessage, setSnackbarOpen })=>{
     const [estado,setEstado]=useState(false)
 
     const filter = (index) => {
@@ -14,8 +14,8 @@ export const TaskItem=({name, description, state, setTaskList, taskList, index, 
         if (message) {
             setSnackbarOpen(true);
             const timeoutId = setTimeout(() => {
-                setSnackbarOpen(false);
                 setMessage("");
+                setSnackbarOpen(false);
             }, 3000);
             return () => clearTimeout(timeoutId);
         }
@@ -30,7 +30,7 @@ export const TaskItem=({name, description, state, setTaskList, taskList, index, 
                         sx={{position:'relative', backgroundColor:'gray', left:209,top:1}}
                         onClick={()=> {
                             filter(index)
-                            setMessage(' TAREA CREADA')
+                            setMessage(' TAREA ELIMINADA')
                         }}
                     >
                         <DeleteIcon/>
