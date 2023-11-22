@@ -15,7 +15,7 @@ export const TaskList = ({ taskList, setTaskList,enqueueSnackbar }) => {
 
     return (
     <Box display={'flex'} gap={5} justifyContent={'center'} flexWrap={'wrap'}>
-        {taskList.map((data, idx) => (
+        {taskList?.map((data, idx) => (
             <Card key={idx} variant="outlined">
                 <CardContent>
                     <TaskItem

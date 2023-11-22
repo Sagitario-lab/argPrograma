@@ -12,17 +12,23 @@ export const TaskForm = ({ taskList, setTaskList }) => {
     };
 
     const onSubmitForm = (e) => {
-        e.preventDefault(); 
-        setTaskList([...taskList, { name: nombre, description: desc }]);
+        e.preventDefault();
+    
+        if (!taskList) {
+            setTaskList([]);
+        }
+    
+        const newTaskList = [...taskList, { name: nombre, description: desc }]
+
+        setTaskList(newTaskList);
         tarjetaCreada();
     
         setNombre("");
         setDesc("");
-    }
 
-    const saveTaskList=()=>{
-        localStorage.setItem('List', JSON.stringify(taskList))
+        localStorage.setItem('List', JSON.stringify(newTaskList))
     }
+    
 
     return (
     <form onSubmit={onSubmitForm}>
@@ -45,7 +51,6 @@ export const TaskForm = ({ taskList, setTaskList }) => {
         </Box>
         <Box>
             <Button type={'submit'}>Crear</Button>
-            <Button onClick={()=>{saveTaskList()}}>Guardar</Button>
         </Box>
     </form>
     );

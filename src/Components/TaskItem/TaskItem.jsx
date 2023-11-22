@@ -10,6 +10,7 @@ const TaskItem = ({ name, description, state, setTaskList, taskList, index }) =>
     const filter = (index) => {
         const list = taskList.filter((_, idx) => idx !== index);
         setTaskList(list);
+        localStorage.setItem('List', JSON.stringify(list))
     };
 
     const handleEstado = () =>{
@@ -25,6 +26,7 @@ const TaskItem = ({ name, description, state, setTaskList, taskList, index }) =>
     }
     const deleteCard = () => {
         enqueueSnackbar('Tarea Eliminada.', { variant: 'error',autoHideDuration: 1000 });
+        
     }
     
 
@@ -38,6 +40,7 @@ return (
             onClick={() => {
             deleteCard();
             filter(index);
+            
         }}
         >
         <DeleteIcon />
