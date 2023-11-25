@@ -1,8 +1,8 @@
-
 import {Box, Button, Card, CardContent, Snackbar} from "@mui/material";
 import {useEffect, useState} from "react";
 import TaskItem from '../TaskItem/TaskItem';
 import { SnackbarProvider, useSnackbar } from 'notistack';
+
 
 export const TaskList = ({ taskList, setTaskList,enqueueSnackbar }) => {
     const [message, setMessage] = useState("");
@@ -25,7 +25,6 @@ export const TaskList = ({ taskList, setTaskList,enqueueSnackbar }) => {
                         taskList={taskList}
                         index={idx}
                         message={message}
-                        
                     />
                 </CardContent>
             </Card>

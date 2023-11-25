@@ -1,6 +1,8 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField} from "@mui/material";
 import { useState } from "react";
 import { SnackbarProvider, useSnackbar } from 'notistack';
+import "./TaskFormEstilos.css";
+
 
 export const TaskForm = ({ taskList, setTaskList }) => {
     const [nombre, setNombre] = useState("");
@@ -28,29 +30,40 @@ export const TaskForm = ({ taskList, setTaskList }) => {
 
         localStorage.setItem('List', JSON.stringify(newTaskList))
     }
-    
+
 
     return (
-    <form onSubmit={onSubmitForm}>
-        <Box>
+    <form onSubmit={onSubmitForm} className="formulario">
+        <h1>Argentina Programa</h1>
+        <p>Todo List</p>
+        <Box className="box1">
             <TextField
+                className="tareaNombre"
                 variant="filled"
                 label={'Nombre de la tarea'}
                 value={nombre}
+                size="small"
                 onChange={(e) => setNombre(e.target.value)}
                 required
             />
         </Box>
-        <Box>
+        <Box className="box2">
             <TextField
+                className="tareaNombre"
                 variant="filled"
+                multiline
+                fullWidth
                 label={'Descripción'}
                 value={desc}
                 onChange={(e) => setDesc(e.target.value)}
             />
         </Box>
-        <Box>
-            <Button type={'submit'}>Crear</Button>
+        <Box className="box3">
+            <Button type={'submit'}className="pushable" id="botonCrear">
+                <span class="shadow"></span>
+                <span class="edge"></span>
+                <span class="front">Crear</span>
+            </Button>
         </Box>
     </form>
     );

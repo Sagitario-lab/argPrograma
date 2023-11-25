@@ -5,6 +5,8 @@ import { TaskList } from "./Components/TaskList/TaskList.jsx";
 import { Box } from "@mui/material";
 import { SnackbarProvider, useSnackbar } from 'notistack';
 
+
+
 function App() {
   const [taskList, setTaskList] = useState([]);
   const { enqueueSnackbar } = useSnackbar();
@@ -16,8 +18,8 @@ function App() {
 
   return (
     <SnackbarProvider maxSnack={3}>
-      <div style={{ backgroundColor: 'dimgrey' }}>
-        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+      <div>
+        <Box sx={{ display: 'flex', justifyContent: 'center',}}>
           <TaskForm taskList={taskList} setTaskList={setTaskList} />
         </Box>
         <Box>
