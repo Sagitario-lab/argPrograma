@@ -34,7 +34,7 @@ const TaskItem = ({ name, description, state, setTaskList, taskList, index }) =>
 
 
 return (
-    <Box width={"270px"} height={'220px'} className="itemPadre">
+    <Box width={"270px"} height={'190px'} className="itemPadre">
     <Box className={"boxInfo"}>
         <IconButton
             className='button'
@@ -60,7 +60,7 @@ return (
             handleEstado();
         }}
         >
-        {estado ? 'True' : 'False'}
+        {estado ? 'Activo' : 'Inactivo'}
         </Button>
     
         </Box>

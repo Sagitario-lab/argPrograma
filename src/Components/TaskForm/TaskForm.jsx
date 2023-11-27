@@ -44,6 +44,8 @@ export const TaskForm = ({ taskList, setTaskList }) => {
                 value={nombre}
                 size="small"
                 onChange={(e) => setNombre(e.target.value)}
+                InputProps={{ style: { color: 'white' } }}
+                
                 required
             />
         </Box>
@@ -56,6 +58,7 @@ export const TaskForm = ({ taskList, setTaskList }) => {
                 label={'Descripción'}
                 value={desc}
                 onChange={(e) => setDesc(e.target.value)}
+                InputProps={{ style: { color: 'white' } }}
             />
         </Box>
         <Box className="box3">
