@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Box, Button, IconButton } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { SnackbarProvider, useSnackbar } from 'notistack';
-import { ClassNames } from '@emotion/react';
+import { useSnackbar } from 'notistack';
 import "./TaskItemEstilos.css";
 
 const TaskItem = ({ name, description, state, setTaskList, taskList, index }) => {
@@ -18,10 +16,10 @@ const TaskItem = ({ name, description, state, setTaskList, taskList, index }) =>
     const handleEstado = () =>{
         setEstado(!estado)
         if (estado) {
-            enqueueSnackbar('Tarea terminada.', { variant: 'error',autoHideDuration: 1000 });
+            enqueueSnackbar('Tarea no terminada.', { variant: 'error',autoHideDuration: 1000 });
             
         } else {
-            enqueueSnackbar('Tarea no terminada.', { variant: 'success',autoHideDuration: 1000 });
+            enqueueSnackbar('Tarea terminada.', { variant: 'success',autoHideDuration: 1000 });
             
         }
         
@@ -60,7 +58,7 @@ return (
             handleEstado();
         }}
         >
-        {estado ? 'Activo' : 'Inactivo'}
+        {estado ? 'Completa' : 'Incompleta'}
         </Button>
     
         </Box>

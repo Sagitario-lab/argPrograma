@@ -4,7 +4,7 @@ import { SnackbarProvider, useSnackbar } from 'notistack';
 import "./TaskFormEstilos.css";
 
 
-export const TaskForm = ({ taskList, setTaskList }) => {
+export const TaskForm = ({ taskList, setTaskList, setTaskListCopy }) => {
     const [nombre, setNombre] = useState("");
     const [desc, setDesc] = useState("");
     const { enqueueSnackbar } = useSnackbar();
@@ -23,6 +23,7 @@ export const TaskForm = ({ taskList, setTaskList }) => {
         const newTaskList = [...taskList, { name: nombre, description: desc }]
 
         setTaskList(newTaskList);
+        setTaskListCopy(newTaskList);
         tarjetaCreada();
     
         setNombre("");
@@ -63,9 +64,9 @@ export const TaskForm = ({ taskList, setTaskList }) => {
         </Box>
         <Box className="box3">
             <Button type={'submit'}className="pushable" id="botonCrear">
-                <span class="shadow"></span>
-                <span class="edge"></span>
-                <span class="front">Crear</span>
+                <span className="shadow"></span>
+                <span className="edge"></span>
+                <span className="front">Crear</span>
             </Button>
         </Box>
     </form>

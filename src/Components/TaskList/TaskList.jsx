@@ -1,16 +1,14 @@
-import {Box, Button, Card, CardContent, Snackbar} from "@mui/material";
-import {useEffect, useState} from "react";
+import {Box, Card, CardContent,} from "@mui/material";
+import { useState} from "react";
 import TaskItem from '../TaskItem/TaskItem';
 import { SnackbarProvider, useSnackbar } from 'notistack';
 
 
 export const TaskList = ({ taskList, setTaskList,enqueueSnackbar }) => {
     const [message, setMessage] = useState("");
-    const [snackbarOpen, setSnackbarOpen] = useState(false);
 
     const handleSnackbarClose = () => {
         setSnackbarOpen(false);
-        
     };
 
     return (
